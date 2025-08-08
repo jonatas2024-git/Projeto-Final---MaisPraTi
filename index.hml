@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagas de Bairro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <h1>Vagas de Bairro</h1>
+        </div>
+        <nav class="menu">
+            <a href="#">Encontrar Vagas</a>
+            <a href="#">Publicar Vaga</a>
+            <a href="#">Login/Cadastro</a>
+        </nav>
+    </header>
+
+    <main class="hero-section">
+        <div class="hero-content">
+            <h1>Trabalhos emergenciais no seu bairro, a um clique de distância.</h1>
+            <p>Encontre a ajuda que você precisa ou a vaga perfeita, rápido e fácil.</p>
+            <div class="search-box">
+                <input type="text" placeholder="O que você procura? (Ex: Eletricista...)">
+                <button>Buscar Vaga</button>
+            </div>
+        </div>
+    </main>
+
+    <section class="featured-jobs">
+        <h2>Vagas urgentes perto de você</h2>
+        <div class="job-cards-container">
+            <div class="job-card">
+                <h3>Ajudante de cozinha</h3>
+                <p>Bairro da Felicidade, SP</p>
+                <p>R$ 150,00 por dia</p>
+            </div>
+            <div class="job-card">
+                <h3>Diária de limpeza</h3>
+                <p>Vila Madalena, SP</p>
+                <p>R$ 120,00 por dia</p>
+            </div>
+            <div class="job-card">
+                <h3>Reparo elétrico</h3>
+                <p>Copacabana, RJ</p>
+                <p>Urgente - Negociável</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Nome do Seu Projeto. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
