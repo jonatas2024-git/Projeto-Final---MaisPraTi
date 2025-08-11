@@ -1,6 +1,6 @@
 Sobre o Projeto
 
-O "Vagas.com" é uma plataforma inovadora que conecta pequenos comércios locais a talentos da vizinhança. A ideia é simplificar e agilizar o processo de contratação, especialmente para vagas emergenciais e de curto prazo. Focada em bairros específicos, a plataforma visa fortalecer a economia local, oferecendo oportunidades de trabalho rápidas e acessíveis para a comunidade, e garantindo que os comerciantes encontrem o talento certo, bem perto de onde precisam.
+O "Vagasmaisprati.com" é uma plataforma inovadora que conecta pequenos comércios locais a talentos da vizinhança. A ideia é simplificar e agilizar o processo de contratação, especialmente para vagas emergenciais e de curto prazo. Focada em bairros específicos, a plataforma visa fortalecer a economia local, oferecendo oportunidades de trabalho rápidas e acessíveis para a comunidade, e garantindo que os comerciantes encontrem o talento certo, bem perto de onde precisam.
 
 Funcionalidades Principais
 Publicação de Vagas de Emergência: Comerciantes podem postar vagas com urgência, como "precisa-se de um atendente para hoje à tarde".
