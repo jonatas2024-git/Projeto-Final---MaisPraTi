@@ -1,35 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import { Box } from '@chakra-ui/react'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Vagas from './pages/Vagas'
+import Publicar from './pages/Publicar'
+import Perfil from './pages/Perfil'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Box minH="100vh" display="flex" flexDirection="column">
+      <Header />
+      <Box flex="1" p={{ base: 4, md: 8 }} maxW="1200px" mx="auto" w="100%">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/vagas" element={<Vagas />} />
+          <Route path="/publicar" element={<Publicar />} />
+          <Route path="/perfil" element={<Perfil />} />
+        </Routes>
+      </Box>
+      <Footer />
+    </Box>
   )
 }
-
-export default App
