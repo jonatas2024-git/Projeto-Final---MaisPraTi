@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = 3000;
 
-// Middleware para processar JSON e dados de formulário
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 app.use(cors());
@@ -13,7 +12,6 @@ mongoose.connect('mongodb://localhost/meu-banco-de-dados')
   .then(() => console.log('Conectado ao MongoDB!'))
   .catch(err => console.error('Não foi possível conectar...', err));
 
-// Definição do Esquema (Schema) para o Usuário
 const userSchema = new mongoose.Schema({
   perfil: String,
   nome: String,
@@ -26,18 +24,14 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
-// Rota de teste
 app.get('/', (req, res) => {
     res.send('O servidor está funcionando!');
 });
 
-// Rota para o cadastro de novos usuários
 app.post('/cadastro', async (req, res) => {
     try {
-        // As chaves agora correspondem aos 'name' dos inputs do HTML
         const { perfil, nome, email, documento, 'data-nascimento': dataNascimento, endereco, senha } = req.body;
         
-        // Validação simples
         if (!nome || !email || !senha) {
             return res.status(400).send('Nome, e-mail e senha são obrigatórios.');
         }
@@ -63,8 +57,28 @@ app.post('/cadastro', async (req, res) => {
         res.status(500).send('Erro ao salvar o usuário: ' + error.message);
     }
 });
+app.post('/login', async (req, res) => {
+    try {
+        const { email, senha } = req.body;
 
-// Inicia o servidor na porta especificada
+        if (!email || !senha) {
+            return res.status(400).send('E-mail e senha são obrigatórios.');
+        }
+
+        const usuario = await User.findOne({ email: email });
+        
+        if (!usuario || usuario.senha !== senha) {
+            return res.status(401).send('Credenciais inválidas.');
+        }
+
+        res.status(200).send('Login realizado com sucesso!');
+        console.log(`Usuário ${usuario.email} logado com sucesso.`);
+
+    } catch (error) {
+        res.status(500).send('Erro ao tentar fazer login: ' + error.message);
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
