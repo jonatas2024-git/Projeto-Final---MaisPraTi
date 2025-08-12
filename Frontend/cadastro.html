@@ -10,7 +10,7 @@
 <div class="form-container">
     <h2>Crie sua Conta</h2>
 
-    <form action="http://localhost:3000/cadastro" method="post">
+    <form id="cadastroForm">
         <div class="perfil-selection">
             <label>Escolha seu Perfil:</label>
             <div>
@@ -60,5 +60,35 @@
         <button type="submit">Cadastrar</button>
     </form>
 </div>
+
+<script>
+    document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch('http://localhost:3000/cadastro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data) 
+        })
+        .then(response => {
+            
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(text) });
+            }
+            return response.text();
+        })
+        .then(result => {
+            alert(result); 
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao realizar o cadastro: ' + error.message);
+        });
+    });
+</script>
 </body>
 </html>
