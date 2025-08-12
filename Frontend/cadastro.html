@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Nome do Projeto</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="form-container">
+    <h2>Crie sua Conta</h2>
+
+    <form id="cadastroForm">
+        <div class="perfil-selection">
+            <label>Escolha seu Perfil:</label>
+            <div>
+                <input type="radio" id="perfil-candidato" name="perfil" value="candidato" required>
+                <label for="perfil-candidato">Candidato</label>
+                
+                <input type="radio" id="perfil-empreendedor" name="perfil" value="empreendedor">
+                <label for="perfil-empreendedor">Empreendedor</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="nome">Nome Completo</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="input-group">
+            <label for="documento">CPF/CNPJ</label>
+            <input type="text" id="documento" name="documento" required>
+        </div>
+
+        <div class="input-group">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" required>
+        </div>
+
+        <div class="input-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" name="endereco" required>
+        </div>
+
+        <div class="input-group">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+
+        <div class="input-group">
+            <label for="confirmar-senha">Confirmar Senha</label>
+            <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('cadastroForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        fetch('http://localhost:3000/cadastro', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' 
+            }, // <-- Adicionei uma vírgula aqui
+            body: JSON.stringify(data) 
+        })
+        .then(response => {
+            
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(text) });
+            }
+            return response.text();
+        })
+        .then(result => {
+            alert(result); 
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            alert('Erro ao realizar o cadastro: ' + error.message);
+        });
+    });
+</script>
