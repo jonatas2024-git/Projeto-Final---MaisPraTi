@@ -71,8 +71,8 @@
         fetch('http://localhost:3000/cadastro', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            },
+                'Content-Type': 'application/json' 
+            }, // <-- Adicionei uma vírgula aqui
             body: JSON.stringify(data) 
         })
         .then(response => {
@@ -84,11 +84,10 @@
         })
         .then(result => {
             alert(result); 
+        })
         .catch(error => {
             console.error('Erro:', error);
             alert('Erro ao realizar o cadastro: ' + error.message);
         });
     });
 </script>
-</body>
-</html>
