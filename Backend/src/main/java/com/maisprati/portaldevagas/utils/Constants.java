@@ -12,4 +12,6 @@ public class Constants {
     public static final String AUTH_NECESSARIA = "Autenticação necessária";
     public static final String ACCESS_DENIED = "ACCESS_DENIED";
     public static final String ACESSO_NEGADO = "Acesso Negado";
+    public static final String USER_EXISTS = "USER_ALREADY_EXISTS";
+    public static final String USER_CADASTRADO = "Usuário já cadastrado.";
 }
