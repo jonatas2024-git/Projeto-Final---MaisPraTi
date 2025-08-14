@@ -1,8 +1,7 @@
-package com.maisprati.portaldevagas.infra.exceptions.error;
+package com.maisprati.portaldevagas.infra.exceptions;
 
-import com.maisprati.portaldevagas.infra.exceptions.AuthenticationException;
-import com.maisprati.portaldevagas.infra.exceptions.BusinessException;
-import com.maisprati.portaldevagas.infra.exceptions.NotFoundException;
+import com.maisprati.portaldevagas.infra.exceptions.error.ErrorResponse;
+import com.maisprati.portaldevagas.infra.exceptions.error.ValidationErrorResponse;
 import com.maisprati.portaldevagas.utils.Constants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
@@ -67,5 +66,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ErrorResponse> handleAuth(Exception ex, HttpServletRequest req) {
         var body = new ErrorResponse(Constants.SERV_INT_ERROR, Constants.INT_ERROR, req.getRequestURI(), now());
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
+    }
+
+    @ExceptionHandler(UserValidationException.class)
+    public ResponseEntity<ErrorResponse> handleUserValidation(UserValidationException ex, HttpServletRequest req) {
+       var body = new ErrorResponse(Constants.USER_CADASTRADO, Constants.USER_EXISTS, req.getRequestURI(), now());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(body);
     }
 }
